@@ -25,6 +25,19 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        prod {
+            buildConfigField("String", "apiKey", "\"DEMO_KEY\"")
+            buildConfigField("String", "baseUrl", "\"https://api.nasa.gov/planetary/\"")
+        }
+        dev {
+            buildConfigField("String", "apiKey", "\"\"")
+            buildConfigField("String", "baseUrl", "\"http://localhost:8080/\"")
+        }
+    }
+
+    flavorDimensions "default"
 }
 
 dependencies {
