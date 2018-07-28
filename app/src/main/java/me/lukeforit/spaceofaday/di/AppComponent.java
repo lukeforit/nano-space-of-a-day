@@ -10,6 +10,7 @@ import me.lukeforit.spaceofaday.common.SpaceApp;
 @Singleton
 @Component(modules = {
         AppModule.class,
+        FragmentContributorModule.class,
         ActivityContributorModule.class,
         AndroidInjectionModule.class
 })

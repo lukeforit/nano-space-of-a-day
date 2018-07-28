@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.lukeforit.spaceofaday.R;
+import me.lukeforit.spaceofaday.ui.base.DIFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,7 +19,7 @@ import me.lukeforit.spaceofaday.R;
  * Use the {@link ApodDetailsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ApodDetailsFragment extends Fragment {
+public class ApodDetailsFragment extends DIFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

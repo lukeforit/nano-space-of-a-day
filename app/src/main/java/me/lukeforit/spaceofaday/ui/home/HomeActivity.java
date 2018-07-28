@@ -3,13 +3,13 @@ package me.lukeforit.spaceofaday.ui.home;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import me.lukeforit.spaceofaday.R;
+import me.lukeforit.spaceofaday.ui.base.DIActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends DIActivity {
 
     private TextView mTextMessage;
 
