@@ -8,7 +8,10 @@ import dagger.Module;
 import dagger.Provides;
 import me.lukeforit.spaceofaday.common.SpaceApp;
 
-@Module(includes = NetModule.class)
+@Module(includes = {
+        NetModule.class,
+        ViewModelModule.class
+})
 public class AppModule {
     @Provides
     @Singleton

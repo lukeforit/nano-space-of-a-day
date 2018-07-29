@@ -15,7 +15,7 @@ import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.data.model.Apod;
 import me.lukeforit.spaceofaday.ui.base.DIFragment;
 
-public class ApodArchiveFragment extends DIFragment {
+public class ApodArchiveFragment extends DIFragment<ApodArchiveViewModel> {
 
     private static final String ARG_COLUMN_COUNT = "column-count";
     private int mColumnCount = 1;
@@ -59,10 +59,9 @@ public class ApodArchiveFragment extends DIFragment {
         return view;
     }
 
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    protected Class<ApodArchiveViewModel> getViewModelClass() {
+        return ApodArchiveViewModel.class;
     }
 
     @Override

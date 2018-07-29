@@ -49,6 +49,11 @@ public class HomeActivity extends DIActivity {
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.content, ApodDetailsFragment.newInstance("", ""))
+                .commit();
     }
 
 }
