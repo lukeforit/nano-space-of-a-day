@@ -23,6 +23,6 @@ public class SpaceApp extends Application implements HasActivityInjector {
 
     @Override
     public AndroidInjector<Activity> activityInjector() {
-        return null;
+        return activityDispatchingAndroidInjector;
     }
 }

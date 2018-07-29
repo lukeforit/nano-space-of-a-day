@@ -10,16 +10,13 @@ import java.util.List;
 
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.data.model.Apod;
-import me.lukeforit.spaceofaday.ui.archive.ApodArchiveFragment.OnListFragmentInteractionListener;
 
 public class ApodArchiveAdapter extends RecyclerView.Adapter<ApodArchiveAdapter.ViewHolder> {
 
     private final List<Apod> mValues;
-    private final OnListFragmentInteractionListener mListener;
 
-    public ApodArchiveAdapter(List<Apod> items, OnListFragmentInteractionListener listener) {
+    public ApodArchiveAdapter(List<Apod> items) {
         mValues = items;
-        mListener = listener;
     }
 
     @Override
@@ -38,11 +35,6 @@ public class ApodArchiveAdapter extends RecyclerView.Adapter<ApodArchiveAdapter.
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
-                }
             }
         });
     }
