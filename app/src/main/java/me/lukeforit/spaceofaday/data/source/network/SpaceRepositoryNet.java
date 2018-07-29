@@ -1,9 +1,10 @@
 package me.lukeforit.spaceofaday.data.source.network;
 
-import java.io.IOException;
-
+import io.reactivex.Observable;
+import io.reactivex.functions.Function;
 import me.lukeforit.spaceofaday.data.model.Apod;
 import me.lukeforit.spaceofaday.data.source.SpaceRepository;
+import retrofit2.Response;
 
 public class SpaceRepositoryNet implements SpaceRepository {
 
@@ -14,12 +15,13 @@ public class SpaceRepositoryNet implements SpaceRepository {
     }
 
     @Override
-    public Apod getApod() {
-        try {
-            return service.getData("").execute().body();
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        }
+    public Observable<Apod> getApod() {
+        return service.getData("")
+                .map(new Function<Response<Apod>, Apod>() {
+                    @Override
+                    public Apod apply(Response<Apod> apodResponse) {
+                        return apodResponse.body();
+                    }
+                });
     }
 }

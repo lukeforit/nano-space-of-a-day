@@ -9,6 +9,7 @@ import me.lukeforit.spaceofaday.data.source.SpaceRepository;
 import me.lukeforit.spaceofaday.data.source.network.SpaceRepositoryNet;
 import me.lukeforit.spaceofaday.data.source.network.SpaceRestService;
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 
 @Module
@@ -20,6 +21,7 @@ public class NetModule {
         return new Retrofit.Builder()
                 .baseUrl(BuildConfig.baseUrl)
                 .addConverterFactory(MoshiConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
 
