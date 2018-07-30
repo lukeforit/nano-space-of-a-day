@@ -58,11 +58,11 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
 
     @Override
     protected int getLayoutRes() {
-        return 0;
+        return R.layout.fragment_apod_details;
     }
 
     @Override
     protected void bind() {
-
+        binding.setVm(viewModel);
     }
 }

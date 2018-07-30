@@ -1,13 +1,8 @@
 package me.lukeforit.spaceofaday.ui.archive;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.Collections;
 
@@ -42,25 +37,6 @@ public class ApodArchiveFragment extends DIFragment<ApodArchiveViewModel, Fragme
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_apod_archive, container, false);
-
-        // Set the adapter
-        if (view instanceof RecyclerView) {
-            Context context = view.getContext();
-            RecyclerView recyclerView = (RecyclerView) view;
-            if (mColumnCount <= 1) {
-                recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            } else {
-                recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
-            }
-            recyclerView.setAdapter(new ApodArchiveAdapter(Collections.<Apod>emptyList()));
-        }
-        return view;
-    }
-
-    @Override
     public void onDetach() {
         super.onDetach();
     }
@@ -72,11 +48,17 @@ public class ApodArchiveFragment extends DIFragment<ApodArchiveViewModel, Fragme
 
     @Override
     protected int getLayoutRes() {
-        return 0;
+        return R.layout.fragment_apod_archive;
     }
 
     @Override
     protected void bind() {
-
+        binding.setVm(viewModel);
+        if (mColumnCount <= 1) {
+            binding.list.setLayoutManager(new LinearLayoutManager(getContext()));
+        } else {
+            binding.list.setLayoutManager(new GridLayoutManager(getContext(), mColumnCount));
+        }
+        binding.list.setAdapter(new ApodArchiveAdapter(Collections.<Apod>emptyList()));
     }
 }
