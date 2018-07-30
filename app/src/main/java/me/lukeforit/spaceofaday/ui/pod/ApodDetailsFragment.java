@@ -7,9 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import me.lukeforit.spaceofaday.R;
+import me.lukeforit.spaceofaday.databinding.FragmentApodDetailsBinding;
 import me.lukeforit.spaceofaday.ui.base.DIFragment;
 
-public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel> {
+public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, FragmentApodDetailsBinding> {
 
     private static final String ARG_APOD_ID = "apod_id";
 
@@ -32,11 +33,6 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel> {
     }
 
     @Override
-    protected Class<ApodDetailsViewModel> getViewModelClass() {
-        return ApodDetailsViewModel.class;
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
@@ -53,5 +49,20 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel> {
     @Override
     public void onDetach() {
         super.onDetach();
+    }
+
+    @Override
+    protected Class<ApodDetailsViewModel> getViewModelClass() {
+        return ApodDetailsViewModel.class;
+    }
+
+    @Override
+    protected int getLayoutRes() {
+        return 0;
+    }
+
+    @Override
+    protected void bind() {
+
     }
 }
