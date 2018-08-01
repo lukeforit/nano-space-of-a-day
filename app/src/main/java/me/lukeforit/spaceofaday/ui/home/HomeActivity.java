@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.ui.archive.ApodArchiveFragment;
@@ -24,7 +23,7 @@ public class HomeActivity extends DIActivity {
                 case R.id.navigation_home:
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.content, ApodDetailsFragment.newInstance("", ""))
+                            .replace(R.id.content, ApodDetailsFragment.newInstance(""))
                             .commit();
                     return true;
                 case R.id.navigation_archive:
@@ -52,7 +51,7 @@ public class HomeActivity extends DIActivity {
 
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.content, ApodDetailsFragment.newInstance("", ""))
+                .replace(R.id.content, ApodDetailsFragment.newInstance(""))
                 .commit();
     }
 

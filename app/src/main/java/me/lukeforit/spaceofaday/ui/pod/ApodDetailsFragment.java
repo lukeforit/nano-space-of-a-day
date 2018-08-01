@@ -1,10 +1,7 @@
 package me.lukeforit.spaceofaday.ui.pod;
 
-import android.content.Context;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.annotation.Nullable;
 
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.databinding.FragmentApodDetailsBinding;
@@ -19,7 +16,7 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
     public ApodDetailsFragment() {
     }
 
-    public static ApodDetailsFragment newInstance(String param1, String param2) {
+    public static ApodDetailsFragment newInstance(String param1) {
         ApodDetailsFragment fragment = new ApodDetailsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_APOD_ID, param1);
@@ -28,27 +25,17 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             apodId = getArguments().getString(ARG_APOD_ID);
         }
+        viewModel.init();
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_apod_details, container, false);
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     @Override

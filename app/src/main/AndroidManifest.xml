@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.lukeforit.spaceofaday">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".common.SpaceApp"
         android:allowBackup="true"
@@ -22,7 +23,6 @@
         <activity
             android:name=".ui.pref.SettingsActivity"
             android:label="@string/title_activity_settings" />
-        <activity android:name=".ui.base.DIActivity"></activity>
     </application>
 
 </manifest>

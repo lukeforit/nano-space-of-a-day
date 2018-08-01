@@ -32,8 +32,8 @@ public abstract class DIFragment<VM extends ViewModel, B extends ViewDataBinding
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModelClass());
     }
 
@@ -41,8 +41,14 @@ public abstract class DIFragment<VM extends ViewModel, B extends ViewDataBinding
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, getLayoutRes(), container, false);
+        binding.setLifecycleOwner(this);
         bind();
         return binding.getRoot();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     //TODO find better solution because it allows viewModel.getClass() to be != getViewModelClass()
