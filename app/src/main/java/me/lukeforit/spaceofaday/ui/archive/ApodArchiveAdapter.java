@@ -53,7 +53,7 @@ public class ApodArchiveAdapter extends RecyclerView.Adapter<ApodArchiveAdapter.
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_number);
+            mIdView = (TextView) view.findViewById(R.id.title_tv);
             mContentView = (TextView) view.findViewById(R.id.content);
         }
 

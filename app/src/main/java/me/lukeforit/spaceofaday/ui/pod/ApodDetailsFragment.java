@@ -1,7 +1,6 @@
 package me.lukeforit.spaceofaday.ui.pod;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.databinding.FragmentApodDetailsBinding;
@@ -31,11 +30,6 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
             apodId = getArguments().getString(ARG_APOD_ID);
         }
         viewModel.init();
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
     }
 
     @Override
