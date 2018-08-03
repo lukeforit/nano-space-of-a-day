@@ -1,16 +1,16 @@
 package me.lukeforit.spaceofaday.ui.home;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.ui.archive.ApodArchiveFragment;
 import me.lukeforit.spaceofaday.ui.base.DIActivity;
 import me.lukeforit.spaceofaday.ui.pod.ApodDetailsFragment;
-import me.lukeforit.spaceofaday.ui.pref.SettingsActivity;
+import me.lukeforit.spaceofaday.ui.pref.SettingsFragment;
 
 public class HomeActivity extends DIActivity {
 
@@ -33,8 +33,13 @@ public class HomeActivity extends DIActivity {
                             .commit();
                     return true;
                 case R.id.navigation_settings:
-                    Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
-                    startActivity(intent);
+                    for (Fragment fragment:getSupportFragmentManager().getFragments()) {
+                        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                    }
+                    getFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.content, new SettingsFragment())
+                            .commit();
                     return true;
             }
             return false;
