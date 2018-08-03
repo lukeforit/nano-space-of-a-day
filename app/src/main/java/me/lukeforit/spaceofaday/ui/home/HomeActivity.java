@@ -29,7 +29,7 @@ public class HomeActivity extends DIActivity {
                 case R.id.navigation_archive:
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.content, ApodArchiveFragment.newInstance(1))
+                            .replace(R.id.content, ApodArchiveFragment.newInstance())
                             .commit();
                     return true;
                 case R.id.navigation_settings:
