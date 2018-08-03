@@ -3,7 +3,6 @@ package me.lukeforit.spaceofaday.ui.home;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 
 import me.lukeforit.spaceofaday.R;
@@ -33,10 +32,7 @@ public class HomeActivity extends DIActivity {
                             .commit();
                     return true;
                 case R.id.navigation_settings:
-                    for (Fragment fragment:getSupportFragmentManager().getFragments()) {
-                        getSupportFragmentManager().beginTransaction().remove(fragment).commit();
-                    }
-                    getFragmentManager()
+                    getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.content, new SettingsFragment())
                             .commit();
