@@ -33,7 +33,7 @@ public class ApodDetailsViewModel extends ViewModel {
 
     void init() {
         disposable.add(
-                repository.getApod()
+                repository.fetchApod()
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Consumer<Apod>() {

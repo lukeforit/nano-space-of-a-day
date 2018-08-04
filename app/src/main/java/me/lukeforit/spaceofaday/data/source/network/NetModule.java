@@ -1,13 +1,11 @@
-package me.lukeforit.spaceofaday.di;
+package me.lukeforit.spaceofaday.data.source.network;
 
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
 import me.lukeforit.spaceofaday.BuildConfig;
-import me.lukeforit.spaceofaday.data.source.SpaceRepository;
-import me.lukeforit.spaceofaday.data.source.network.SpaceRepositoryNet;
-import me.lukeforit.spaceofaday.data.source.network.SpaceRestService;
+import me.lukeforit.spaceofaday.data.source.ApodRepository;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -33,13 +31,13 @@ public class NetModule {
 
     @Provides
     @Singleton
-    public SpaceRestService provideSpaceRestService(Retrofit retrofit) {
-        return retrofit.create(SpaceRestService.class);
+    public ApodRestService provideApodRestService(Retrofit retrofit) {
+        return retrofit.create(ApodRestService.class);
     }
 
     @Provides
     @Singleton
-    public SpaceRepository provideSpaceRepository(SpaceRestService service) {
-        return new SpaceRepositoryNet(service);
+    public ApodRepository provideApodRepository(ApodRestService service) {
+        return new ApodRepositoryNet(service);
     }
 }

@@ -6,7 +6,10 @@ import retrofit2.Response;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
-public interface SpaceRestService {
+public interface ApodRestService {
     @GET("apod")
     Single<Response<Apod>> getData(@Query("api_key") String apiKey);
+
+    @GET("apod")
+    Single<Response<Apod>> getData(@Query("api_key") String apiKey, @Query("date") String date);
 }
