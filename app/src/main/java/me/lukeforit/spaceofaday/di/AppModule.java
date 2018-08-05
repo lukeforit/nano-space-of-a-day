@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import me.lukeforit.spaceofaday.common.SpaceApp;
+import me.lukeforit.spaceofaday.data.mapper.ApodMapper;
 import me.lukeforit.spaceofaday.data.source.ApodRepository;
 import me.lukeforit.spaceofaday.data.source.SpaceRepository;
 import me.lukeforit.spaceofaday.data.source.SpaceRepositoryImpl;
@@ -30,7 +31,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    public SpaceRepository provideSpaceRepository(ApodRepository apodRepository, ApodDao apodDao) {
-        return new SpaceRepositoryImpl(apodRepository, apodDao);
+    public SpaceRepository provideSpaceRepository(ApodRepository apodRepository, ApodDao apodDao, ApodMapper mapper) {
+        return new SpaceRepositoryImpl(apodRepository, apodDao, mapper);
     }
 }

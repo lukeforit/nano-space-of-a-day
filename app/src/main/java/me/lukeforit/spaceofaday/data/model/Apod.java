@@ -14,6 +14,20 @@ public class Apod {
     private String title;
     private String url;
 
+    public Apod() {
+    }
+
+    public Apod(String copyright, String date, String explanation, String hdurl, String mediaType, String serviceVersion, String title, String url) {
+        this.copyright = copyright;
+        this.date = date;
+        this.explanation = explanation;
+        this.hdurl = hdurl;
+        this.mediaType = mediaType;
+        this.serviceVersion = serviceVersion;
+        this.title = title;
+        this.url = url;
+    }
+
     public String getCopyright() {
         return copyright;
     }

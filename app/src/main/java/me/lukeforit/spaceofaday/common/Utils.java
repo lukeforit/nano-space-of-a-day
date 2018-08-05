@@ -9,7 +9,7 @@ import java.util.Date;
 public class Utils {
     @SuppressLint("SimpleDateFormat")
     public static String getDefaultDateAsString() {
-        return new SimpleDateFormat("YYYY-MM-DD").format(new Date());
+        return new SimpleDateFormat("YYYY-MM-dd").format(new Date());
     }
 
     public static int getDateAsInt(String date) {

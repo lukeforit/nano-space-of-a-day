@@ -19,6 +19,21 @@ public class ApodEntity {
     private String title;
     private String url;
 
+    public ApodEntity() {
+    }
+
+    public ApodEntity(int id, String copyright, String date, String explanation, String hdurl, String mediaType, String serviceVersion, String title, String url) {
+        this.id = id;
+        this.copyright = copyright;
+        this.date = date;
+        this.explanation = explanation;
+        this.hdurl = hdurl;
+        this.mediaType = mediaType;
+        this.serviceVersion = serviceVersion;
+        this.title = title;
+        this.url = url;
+    }
+
     public int getId() {
         return id;
     }
