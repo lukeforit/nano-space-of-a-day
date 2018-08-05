@@ -16,17 +16,6 @@ public class ApodRepositoryNet implements ApodRepository {
     }
 
     @Override
-    public Single<Apod> fetchApod() {
-        return service.getData(BuildConfig.apiKey)
-                .map(new Function<Response<Apod>, Apod>() {
-                    @Override
-                    public Apod apply(Response<Apod> apodResponse) {
-                        return apodResponse.body();
-                    }
-                });
-    }
-
-    @Override
     public Single<Apod> fetchApod(String date) {
         return service.getData(BuildConfig.apiKey, date)
                 .map(new Function<Response<Apod>, Apod>() {

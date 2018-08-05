@@ -1,8 +1,10 @@
 package me.lukeforit.spaceofaday.ui.pod;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import me.lukeforit.spaceofaday.R;
+import me.lukeforit.spaceofaday.common.Utils;
 import me.lukeforit.spaceofaday.databinding.FragmentApodDetailsBinding;
 import me.lukeforit.spaceofaday.ui.base.DIFragment;
 
@@ -15,10 +17,10 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
     public ApodDetailsFragment() {
     }
 
-    public static ApodDetailsFragment newInstance(String param1) {
+    public static ApodDetailsFragment newInstance(String apod) {
         ApodDetailsFragment fragment = new ApodDetailsFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_APOD_ID, param1);
+        args.putString(ARG_APOD_ID, apod);
         fragment.setArguments(args);
         return fragment;
     }
@@ -29,7 +31,10 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
         if (getArguments() != null) {
             apodId = getArguments().getString(ARG_APOD_ID);
         }
-        viewModel.init();
+        if (TextUtils.isEmpty(apodId)) {
+            apodId = Utils.getDefaultDateAsString();
+        }
+        viewModel.init(apodId);
     }
 
     @Override

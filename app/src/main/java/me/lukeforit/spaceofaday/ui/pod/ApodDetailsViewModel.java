@@ -2,6 +2,7 @@ package me.lukeforit.spaceofaday.ui.pod;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import javax.inject.Inject;
@@ -32,9 +33,9 @@ public class ApodDetailsViewModel extends ViewModel {
         super.onCleared();
     }
 
-    void init() {
+    void init(@NonNull String apodId) {
         disposable.add(
-                repository.fetchApod()
+                repository.fetchApod(apodId)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Consumer<Apod>() {

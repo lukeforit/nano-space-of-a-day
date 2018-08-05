@@ -9,6 +9,7 @@ import io.reactivex.Single;
 import io.reactivex.SingleSource;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import me.lukeforit.spaceofaday.common.Utils;
 import me.lukeforit.spaceofaday.data.model.Apod;
 import me.lukeforit.spaceofaday.data.source.cache.ApodDao;
 import me.lukeforit.spaceofaday.data.source.cache.ApodEntity;
@@ -25,13 +26,18 @@ public class SpaceRepositoryImpl implements SpaceRepository {
 
     @Override
     public Single<List<Apod>> fetchAllApods() {
-        return null;
+        return apodDao.fetchAll().map(new Function<List<ApodEntity>, List<Apod>>() {
+            @Override
+            public List<Apod> apply(List<ApodEntity> apodEntities) throws Exception {
+                //TODO implement
+                return null;
+            }
+        });
     }
 
     @Override
-    public Single<Apod> fetchApod() {
-        //TODO current date ID
-        return apodDao.fetchBy(20180804)
+    public Single<Apod> fetchApod(final String date) {
+        return apodDao.fetchBy(Utils.getDateAsInt(date))
                 .map(new Function<ApodEntity, Apod>() {
                     @Override
                     public Apod apply(ApodEntity apodEntity) {
@@ -43,7 +49,7 @@ public class SpaceRepositoryImpl implements SpaceRepository {
                     @Override
                     public SingleSource<? extends Apod> apply(Throwable throwable) {
                         if (throwable instanceof EmptyResultSetException) {
-                            return repository.fetchApod().doOnSuccess(new Consumer<Apod>() {
+                            return repository.fetchApod(date).doOnSuccess(new Consumer<Apod>() {
                                 @Override
                                 public void accept(Apod apod) {
                                     //TODO mapper
@@ -55,10 +61,5 @@ public class SpaceRepositoryImpl implements SpaceRepository {
                         }
                     }
                 });
-    }
-
-    @Override
-    public Single<Apod> fetchApod(String date) {
-        return repository.fetchApod(date);
     }
 }
