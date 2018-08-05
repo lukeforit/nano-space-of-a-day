@@ -37,6 +37,10 @@ public abstract class DataBindingAdapter<B extends ViewDataBinding, D> extends R
         return data.size();
     }
 
+    public void setData(List<D> data) {
+        this.data = data;
+    }
+
     @LayoutRes
     protected abstract int getLayoutRes();
 

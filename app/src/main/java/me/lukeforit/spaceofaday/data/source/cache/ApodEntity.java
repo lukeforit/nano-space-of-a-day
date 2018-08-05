@@ -3,12 +3,14 @@ package me.lukeforit.spaceofaday.data.source.cache;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 @Entity(tableName = ApodDao.TABLE_NAME)
 public class ApodEntity {
     @PrimaryKey
     private int id;
     private String copyright;
+    @NonNull
     private String date;
     private String explanation;
     private String hdurl;
@@ -22,7 +24,7 @@ public class ApodEntity {
     public ApodEntity() {
     }
 
-    public ApodEntity(int id, String copyright, String date, String explanation, String hdurl, String mediaType, String serviceVersion, String title, String url) {
+    public ApodEntity(int id, String copyright, @NonNull String date, String explanation, String hdurl, String mediaType, String serviceVersion, String title, String url) {
         this.id = id;
         this.copyright = copyright;
         this.date = date;
@@ -50,11 +52,12 @@ public class ApodEntity {
         this.copyright = copyright;
     }
 
+    @NonNull
     public String getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(@NonNull String date) {
         this.date = date;
     }
 
