@@ -15,8 +15,6 @@
         android:name="me.lukeforit.spaceofaday.ui.archive.ApodFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="me.lukeforit.spaceofaday.ui.archive.ApodArchiveFragment"
         tools:listitem="@layout/list_item_apod" />
