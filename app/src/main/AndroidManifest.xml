@@ -3,6 +3,7 @@
     package="me.lukeforit.spaceofaday">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".common.SpaceApp"
         android:allowBackup="true"
@@ -18,6 +19,22 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".ui.widget.ApodWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/apod_widget_info" />
+        </receiver>
+
+        <activity android:name=".ui.widget.ApodWidgetConfigureActivity">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
         </activity>
     </application>
