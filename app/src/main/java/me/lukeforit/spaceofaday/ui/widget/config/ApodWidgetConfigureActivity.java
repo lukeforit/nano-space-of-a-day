@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 
 import javax.inject.Inject;
 
@@ -55,6 +56,8 @@ public class ApodWidgetConfigureActivity extends DIActivity {
                 DataBindingUtil.setContentView(this, R.layout.activity_apod_widget_configure);
         binding.setViewModel(viewModel);
         binding.executePendingBindings();
+
+        getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
 
         // Set the result to CANCELED.  This will cause the widget host to cancel
         // out of the widget placement if the user presses the back button.
