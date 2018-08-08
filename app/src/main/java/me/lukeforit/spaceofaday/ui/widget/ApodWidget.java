@@ -6,6 +6,7 @@ import android.content.Context;
 import android.widget.RemoteViews;
 
 import me.lukeforit.spaceofaday.R;
+import me.lukeforit.spaceofaday.ui.widget.config.ApodWidgetConfigureActivity;
 
 /**
  * Implementation of App Widget functionality.
@@ -13,12 +14,12 @@ import me.lukeforit.spaceofaday.R;
  */
 public class ApodWidget extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                int appWidgetId) {
+    public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
+                                       int appWidgetId) {
 
-        CharSequence widgetText = ApodWidgetConfigureActivity.loadTitlePref(context, appWidgetId);
+        CharSequence widgetText = "" + ApodWidgetConfigureActivity.loadOptionPref(context, appWidgetId);
         // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.apod_widget);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_apod);
         views.setTextViewText(R.id.appwidget_text, widgetText);
 
         // Instruct the widget manager to update the widget

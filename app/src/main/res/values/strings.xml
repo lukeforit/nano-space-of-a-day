@@ -8,6 +8,10 @@
     <string name="menu_title_archive">Archive</string>
     <string name="menu_title_settings">Settings</string>
 
+    <string name="widget_option_picture_only">Display only picture of a day if available</string>
+    <string name="widget_option_explanation_only">Display only information about a picture of a day</string>
+    <string name="widget_option_both">Display both - a picture and its explanation</string>
+
     <!-- General settings -->
     <!-- todo remove if not needed -->
     <string name="pref_header_general">General</string>

@@ -13,6 +13,7 @@ import dagger.multibindings.IntoMap;
 import me.lukeforit.spaceofaday.ui.archive.ApodArchiveViewModel;
 import me.lukeforit.spaceofaday.ui.base.DIViewModelFactory;
 import me.lukeforit.spaceofaday.ui.pod.ApodDetailsViewModel;
+import me.lukeforit.spaceofaday.ui.widget.config.ApodWidgetConfigureViewModel;
 
 @Module
 public abstract class ViewModelModule {
@@ -29,6 +30,11 @@ public abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ApodArchiveViewModel.class)
     abstract ViewModel bindApodArchiveViewModel(ApodArchiveViewModel apodArchiveViewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ApodWidgetConfigureViewModel.class)
+    abstract ViewModel bindApodWidgetConfigureViewModel(ApodWidgetConfigureViewModel apodWidgetConfigureViewModel);
 
     @Retention(RetentionPolicy.RUNTIME)
     @MapKey

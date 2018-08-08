@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="me.lukeforit.spaceofaday.ui.widget.config.ApodWidgetConfigureViewModel" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/options_rg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_medium"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_picture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_medium"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/widget_option_picture_only" />
+
+            <RadioButton
+                android:id="@+id/radio_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_medium"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/widget_option_explanation_only" />
+
+            <RadioButton
+                android:id="@+id/radio_both"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_medium"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/widget_option_both" />
+        </RadioGroup>
+
+    </FrameLayout>
+</layout>

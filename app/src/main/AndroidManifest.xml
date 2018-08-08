@@ -32,7 +32,7 @@
                 android:resource="@xml/apod_widget_info" />
         </receiver>
 
-        <activity android:name=".ui.widget.ApodWidgetConfigureActivity">
+        <activity android:name=".ui.widget.config.ApodWidgetConfigureActivity">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>
