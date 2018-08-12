@@ -3,9 +3,16 @@ package me.lukeforit.spaceofaday.ui.widget;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.widget.RemoteViews;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
+import java.util.concurrent.ExecutionException;
+
 import me.lukeforit.spaceofaday.R;
+import me.lukeforit.spaceofaday.common.Utils;
 import me.lukeforit.spaceofaday.ui.widget.config.ApodWidgetConfigureActivity;
 
 /**
@@ -15,28 +22,37 @@ import me.lukeforit.spaceofaday.ui.widget.config.ApodWidgetConfigureActivity;
 public class ApodWidget extends AppWidgetProvider {
 
     public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                       int appWidgetId) {
+                                       int appWidgetId, String imgUrl, String explanation) {
 
-        CharSequence widgetText = "" + ApodWidgetConfigureActivity.loadOptionPref(context, appWidgetId);
-        // Construct the RemoteViews object
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_apod);
-        views.setTextViewText(R.id.appwidget_text, widgetText);
+        int pref = ApodWidgetConfigureActivity.loadOptionPref(context, appWidgetId);
 
-        // Instruct the widget manager to update the widget
+        final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_apod);
+        views.setTextViewText(R.id.explanation_tv, explanation);
+
+        Bitmap b = null;
+        try {
+            b = Glide
+                    .with(context.getApplicationContext()) // safer!
+                    .asBitmap()
+                    .apply(new RequestOptions().centerCrop())
+                    .load(imgUrl)
+                    .submit().get();
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        views.setBitmap(R.id.picture_iv, "setImageBitmap", b);
+
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        // There may be multiple widgets active, so update all of them
-        for (int appWidgetId : appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId);
-        }
+        ApodIntentService.startActionFetchApod(context, Utils.getDefaultDateAsString());
     }
 
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
-        // When the user deletes the widget, delete the preference associated with it.
         for (int appWidgetId : appWidgetIds) {
             ApodWidgetConfigureActivity.deleteTitlePref(context, appWidgetId);
         }
@@ -44,12 +60,10 @@ public class ApodWidget extends AppWidgetProvider {
 
     @Override
     public void onEnabled(Context context) {
-        // Enter relevant functionality for when the first widget is created
     }
 
     @Override
     public void onDisabled(Context context) {
-        // Enter relevant functionality for when the last widget is disabled
     }
 }
 

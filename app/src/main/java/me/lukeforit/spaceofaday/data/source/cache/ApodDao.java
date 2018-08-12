@@ -21,4 +21,7 @@ public interface ApodDao {
 
     @Query("select * from " + TABLE_NAME + " where id = :id")
     Single<ApodEntity> fetchBy(int id);
+
+    @Query("select * from " + TABLE_NAME + " where id = :id")
+    ApodEntity fetchSynchronyouslyBy(int id);
 }

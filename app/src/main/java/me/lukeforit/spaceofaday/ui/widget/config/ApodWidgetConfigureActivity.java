@@ -85,7 +85,7 @@ public class ApodWidgetConfigureActivity extends DIActivity {
 
         // It is the responsibility of the configuration activity to update the app widget
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
-        ApodWidget.updateAppWidget(this, appWidgetManager, appWidgetId);
+//        ApodWidget.updateAppWidget(this, appWidgetManager, appWidgetId);
 
         // Make sure we pass back the original appWidgetId
         Intent resultValue = new Intent();

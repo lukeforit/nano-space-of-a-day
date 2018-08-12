@@ -12,6 +12,7 @@ import me.lukeforit.spaceofaday.common.SpaceApp;
         AppModule.class,
         FragmentContributorModule.class,
         ActivityContributorModule.class,
+        ServiceContributorModule.class,
         AndroidInjectionModule.class
 })
 public interface AppComponent {
