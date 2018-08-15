@@ -48,6 +48,7 @@ public class ApodWidget extends AppWidgetProvider {
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        //TODO schedule job
         ApodIntentService.startActionFetchApod(context, Utils.getDefaultDateAsString());
     }
 

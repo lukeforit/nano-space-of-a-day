@@ -42,7 +42,15 @@
 
         <service
             android:name=".ui.widget.ApodIntentService"
-            android:exported="false"></service>
+            android:exported="false" />
+
+        <service
+            android:name=".service.FetchApodFirebaseJobService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
