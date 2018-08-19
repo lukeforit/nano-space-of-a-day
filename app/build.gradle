@@ -5,6 +5,14 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        testConfig {
+            keyAlias 'testKey'
+            keyPassword 'testtest'
+            storeFile file('test_keystore.jks')
+            storePassword 'testtest'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "me.lukeforit.spaceofaday.app"
@@ -14,29 +22,27 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-
     dataBinding {
         enabled = true
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
     productFlavors {
         prod {
             buildConfigField("String", "apiKey", "\"DEMO_KEY\"")
             buildConfigField("String", "baseUrl", "\"https://api.nasa.gov/planetary/\"")
+            signingConfig signingConfigs.testConfig
         }
-        dev {
-            buildConfigField("String", "apiKey", "\"\"")
-            buildConfigField("String", "baseUrl", "\"http://localhost:8080/\"")
-        }
+//        dev {
+//            buildConfigField("String", "apiKey", "\"\"")
+//            buildConfigField("String", "baseUrl", "\"http://localhost:8080/\"")
+//            signingConfig signingConfigs.testConfig
+//        }
     }
-
     flavorDimensions "default"
 }
 
@@ -45,8 +51,7 @@ dependencies {
         room_version = "1.1.1"
         lifecycle_version = "1.1.1"
     }
-
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:preference-v7:27.1.1'
