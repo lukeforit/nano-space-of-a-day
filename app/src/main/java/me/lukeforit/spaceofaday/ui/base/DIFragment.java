@@ -14,9 +14,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
+import java.util.Objects;
+
 import javax.inject.Inject;
 
 import dagger.android.support.AndroidSupportInjection;
+import me.lukeforit.spaceofaday.common.SpaceApp;
 
 public abstract class DIFragment<VM extends ViewModel, B extends ViewDataBinding> extends Fragment {
 
@@ -24,6 +30,8 @@ public abstract class DIFragment<VM extends ViewModel, B extends ViewDataBinding
     protected DIViewModelFactory viewModelFactory;
     protected VM viewModel;
     protected B binding;
+
+    private Tracker tracker;
 
     @Override
     public void onAttach(Context context) {
@@ -35,6 +43,9 @@ public abstract class DIFragment<VM extends ViewModel, B extends ViewDataBinding
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(getViewModelClass());
+
+        SpaceApp application = (SpaceApp) Objects.requireNonNull(getContext()).getApplicationContext();
+        tracker = application.getDefaultTracker();
     }
 
     @Override
@@ -49,6 +60,13 @@ public abstract class DIFragment<VM extends ViewModel, B extends ViewDataBinding
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        tracker.setScreenName("Fragment-" + this.getClass().getSimpleName());
+        tracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     //TODO find better solution because it allows viewModel.getClass() to be != getViewModelClass()
