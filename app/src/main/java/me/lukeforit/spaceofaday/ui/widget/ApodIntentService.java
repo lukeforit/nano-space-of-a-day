@@ -13,6 +13,7 @@ import me.lukeforit.spaceofaday.common.Utils;
 import me.lukeforit.spaceofaday.data.mapper.ApodMapper;
 import me.lukeforit.spaceofaday.data.model.Apod;
 import me.lukeforit.spaceofaday.data.source.cache.ApodDao;
+import me.lukeforit.spaceofaday.data.source.cache.ApodEntity;
 
 /**
  * An {@link IntentService} subclass for handling asynchronous task requests in
@@ -63,7 +64,14 @@ public class ApodIntentService extends IntentService {
      * parameters.
      */
     private void handleActionFetchApod(String date) {
-        Apod apod = mapper.map(apodDao.fetchSynchronyouslyBy(Utils.getDateAsInt(date)));
+        ApodEntity apodEntity = apodDao.fetchSynchronyouslyBy(Utils.getDateAsInt(date));
+
+        if (apodEntity == null) {
+            //TODO handle case
+            return;
+        }
+
+        Apod apod = mapper.map(apodEntity);
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, ApodWidget.class));
 

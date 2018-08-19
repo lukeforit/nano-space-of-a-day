@@ -18,7 +18,7 @@ public class FetchApodJobScheduler {
     private static final String JOB_TAG = "FetchApodJobTag";
     private static boolean initialized;
 
-    synchronized public static void scheduleChargingReminder(@NonNull final Context context) {
+    synchronized public static void scheduleFetchingApod(@NonNull final Context context) {
         if (initialized) return;
 
         Driver driver = new GooglePlayDriver(context);

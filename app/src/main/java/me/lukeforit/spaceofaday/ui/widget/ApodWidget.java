@@ -13,6 +13,7 @@ import java.util.concurrent.ExecutionException;
 
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.common.Utils;
+import me.lukeforit.spaceofaday.service.FetchApodJobScheduler;
 import me.lukeforit.spaceofaday.ui.widget.config.ApodWidgetConfigureActivity;
 
 /**
@@ -32,7 +33,7 @@ public class ApodWidget extends AppWidgetProvider {
         Bitmap b = null;
         try {
             b = Glide
-                    .with(context.getApplicationContext()) // safer!
+                    .with(context.getApplicationContext())
                     .asBitmap()
                     .apply(new RequestOptions().centerCrop())
                     .load(imgUrl)
@@ -61,6 +62,7 @@ public class ApodWidget extends AppWidgetProvider {
 
     @Override
     public void onEnabled(Context context) {
+        FetchApodJobScheduler.scheduleFetchingApod(context);
     }
 
     @Override
