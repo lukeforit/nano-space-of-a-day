@@ -16,7 +16,6 @@ import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.databinding.ActivityApodWidgetConfigureBinding;
 import me.lukeforit.spaceofaday.ui.base.DIActivity;
 import me.lukeforit.spaceofaday.ui.base.DIViewModelFactory;
-import me.lukeforit.spaceofaday.ui.widget.ApodWidget;
 
 public class ApodWidgetConfigureActivity extends DIActivity {
 

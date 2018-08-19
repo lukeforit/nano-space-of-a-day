@@ -16,10 +16,6 @@ import me.lukeforit.spaceofaday.common.Utils;
 import me.lukeforit.spaceofaday.service.FetchApodJobScheduler;
 import me.lukeforit.spaceofaday.ui.widget.config.ApodWidgetConfigureActivity;
 
-/**
- * Implementation of App Widget functionality.
- * App Widget Configuration implemented in {@link ApodWidgetConfigureActivity ApodWidgetConfigureActivity}
- */
 public class ApodWidget extends AppWidgetProvider {
 
     public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,

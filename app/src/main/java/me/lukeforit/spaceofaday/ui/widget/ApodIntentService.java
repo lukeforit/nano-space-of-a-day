@@ -15,10 +15,6 @@ import me.lukeforit.spaceofaday.data.model.Apod;
 import me.lukeforit.spaceofaday.data.source.cache.ApodDao;
 import me.lukeforit.spaceofaday.data.source.cache.ApodEntity;
 
-/**
- * An {@link IntentService} subclass for handling asynchronous task requests in
- * a service on a separate handler thread.
- */
 public class ApodIntentService extends IntentService {
 
     private static final String ACTION_FETCH_APOD = "me.lukeforit.spaceofaday.ui.widget.action.FETCH_APOD";
@@ -33,12 +29,6 @@ public class ApodIntentService extends IntentService {
         super("ApodIntentService");
     }
 
-    /**
-     * Starts this service to perform action Foo with the given parameters. If
-     * the service is already performing a task this action will be queued.
-     *
-     * @see IntentService
-     */
     public static void startActionFetchApod(Context context, String date) {
         Intent intent = new Intent(context, ApodIntentService.class);
         intent.setAction(ACTION_FETCH_APOD);
@@ -59,10 +49,6 @@ public class ApodIntentService extends IntentService {
         }
     }
 
-    /**
-     * Handle action Foo in the provided background thread with the provided
-     * parameters.
-     */
     private void handleActionFetchApod(String date) {
         ApodEntity apodEntity = apodDao.fetchSynchronyouslyBy(Utils.getDateAsInt(date));
 
