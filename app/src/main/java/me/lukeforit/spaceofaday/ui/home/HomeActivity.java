@@ -5,6 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.ui.archive.ApodArchiveFragment;
 import me.lukeforit.spaceofaday.ui.base.DIActivity;
@@ -54,6 +58,13 @@ public class HomeActivity extends DIActivity {
                 .beginTransaction()
                 .replace(R.id.content, ApodDetailsFragment.newInstance(""))
                 .commit();
+
+        MobileAds.initialize(this,
+                "ca-app-pub-3940256099942544~3347511713");
+
+        AdView adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
     }
 
 }
