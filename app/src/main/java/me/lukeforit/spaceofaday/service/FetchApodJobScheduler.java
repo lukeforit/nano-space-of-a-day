@@ -1,6 +1,7 @@
 package me.lukeforit.spaceofaday.service;
 
 import android.content.Context;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 
 import com.firebase.jobdispatcher.Constraint;
@@ -24,13 +25,16 @@ public class FetchApodJobScheduler {
         Driver driver = new GooglePlayDriver(context);
         FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(driver);
 
+        boolean autoSync = PreferenceManager
+                .getDefaultSharedPreferences(context)
+                .getBoolean(("auto_sync"), true);
+
         Job constraintReminderJob = dispatcher.newJobBuilder()
                 .setService(FetchApodFirebaseJobService.class)
                 .setTag(JOB_TAG)
                 .setConstraints(Constraint.ON_ANY_NETWORK)
-                //TODO adjust to prefs
                 .setLifetime(Lifetime.FOREVER)
-                .setRecurring(true)
+                .setRecurring(autoSync)
                 .setTrigger(Trigger.executionWindow(
                         (int) TimeUnit.DAYS.toSeconds(1),
                         (int) TimeUnit.DAYS.toSeconds(2)))
