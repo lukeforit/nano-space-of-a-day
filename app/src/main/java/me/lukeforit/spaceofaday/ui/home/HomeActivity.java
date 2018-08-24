@@ -10,6 +10,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 import me.lukeforit.spaceofaday.R;
+import me.lukeforit.spaceofaday.service.FetchApodJobScheduler;
 import me.lukeforit.spaceofaday.ui.archive.ApodArchiveFragment;
 import me.lukeforit.spaceofaday.ui.base.DIActivity;
 import me.lukeforit.spaceofaday.ui.pod.ApodDetailsFragment;
@@ -66,6 +67,8 @@ public class HomeActivity extends DIActivity {
         AdView adView = findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
+
+        FetchApodJobScheduler.scheduleFetchingApod(this);
     }
 
 }

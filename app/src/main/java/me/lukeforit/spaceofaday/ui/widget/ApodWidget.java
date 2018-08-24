@@ -2,7 +2,9 @@ package me.lukeforit.spaceofaday.ui.widget;
 
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.widget.RemoteViews;
 
@@ -43,9 +45,19 @@ public class ApodWidget extends AppWidgetProvider {
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
 
+    public static void triggerWidgetUpdate(Context context) {
+        Intent intent = new Intent(context, ApodWidget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+
+        int[] ids = AppWidgetManager.getInstance(context)
+                .getAppWidgetIds(new ComponentName(context, ApodWidget.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        context.sendBroadcast(intent);
+    }
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
-        //TODO schedule job
+        //TODO handle IllegalStateException: Not allowed to start service Intent - job
         ApodIntentService.startActionFetchApod(context, Utils.getDefaultDateAsString());
     }
 

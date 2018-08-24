@@ -13,6 +13,7 @@ import io.reactivex.schedulers.Schedulers;
 import me.lukeforit.spaceofaday.common.Utils;
 import me.lukeforit.spaceofaday.data.model.Apod;
 import me.lukeforit.spaceofaday.data.source.SpaceRepository;
+import me.lukeforit.spaceofaday.ui.widget.ApodWidget;
 
 public class FetchApodFirebaseJobService extends JobService {
 
@@ -37,7 +38,7 @@ public class FetchApodFirebaseJobService extends JobService {
                             @Override
                             public void accept(Apod apod) {
                                 jobFinished(job, false);
-                                //TODO notify about success
+                                ApodWidget.triggerWidgetUpdate(getApplicationContext());
                             }
                         }, new Consumer<Throwable>() {
                             @Override
