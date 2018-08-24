@@ -26,21 +26,26 @@ public class ApodWidget extends AppWidgetProvider {
         int pref = ApodWidgetConfigureActivity.loadOptionPref(context, appWidgetId);
 
         final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_apod);
-        views.setTextViewText(R.id.explanation_tv, explanation);
 
-        Bitmap b = null;
-        try {
-            b = Glide
-                    .with(context.getApplicationContext())
-                    .asBitmap()
-                    .apply(new RequestOptions().centerCrop())
-                    .load(imgUrl)
-                    .submit().get();
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
+        if (pref == R.id.radio_both || pref == R.id.radio_info) {
+            views.setTextViewText(R.id.explanation_tv, explanation);
         }
 
-        views.setBitmap(R.id.picture_iv, "setImageBitmap", b);
+        if (pref == R.id.radio_both || pref == R.id.radio_picture) {
+            Bitmap bitmap = null;
+            try {
+                bitmap = Glide
+                        .with(context.getApplicationContext())
+                        .asBitmap()
+                        .apply(new RequestOptions().centerCrop())
+                        .load(imgUrl)
+                        .submit().get();
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+
+            views.setBitmap(R.id.picture_iv, "setImageBitmap", bitmap);
+        }
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
     }
