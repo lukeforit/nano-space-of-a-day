@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.databinding.FragmentApodArchiveBinding;
@@ -34,7 +35,7 @@ public class ApodArchiveFragment extends DIFragment<ApodArchiveViewModel, Fragme
         if (savedInstanceState == null) {
             viewModel.init();
         }
-        homeViewModel = ViewModelProviders.of(getActivity(), viewModelFactory).get(HomeViewModel.class);
+        homeViewModel = ViewModelProviders.of(Objects.requireNonNull(getActivity()), viewModelFactory).get(HomeViewModel.class);
 
         viewModel.getArchiveItemListLiveData().observe(this, new Observer<List<ArchiveItem>>() {
             @Override

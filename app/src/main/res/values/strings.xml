@@ -1,8 +1,5 @@
 <resources>
     <string name="app_name">Space of a day</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_activity_settings">Settings</string>
 
     <string name="menu_title_home">Home</string>
     <string name="menu_title_archive">Archive</string>
@@ -19,31 +16,11 @@
     <string name="item_apod_empty_instruction">No data available. Please download a picture for that day to see how amazing the Universe is!</string>
 
     <!-- General settings -->
-    <!-- todo remove if not needed -->
-    <string name="pref_header_general">General</string>
-
     <string name="pref_title_auto_sync">Enable daily synchronization</string>
     <string name="pref_description_auto_sync">Automatically downloads a picture of a day into
         the application database
     </string>
 
-    <string name="pref_title_display_name">Display name</string>
-    <string name="pref_default_display_name">John Smith</string>
-
-    <string name="pref_title_cache">Cache policy</string>
-    <string-array name="pref_cache_list_titles">
-        <item>Keep them all</item>
-        <item>Last month</item>
-        <item>Do not cache</item>
-    </string-array>
-    <string-array name="pref_example_list_values">
-        <item>1</item>
-        <item>0</item>
-        <item>-1</item>
-    </string-array>
-
     <!-- Widget -->
     <string name="appwidget_text">A picture of a day</string>
-    <string name="configure">Configure</string>
-    <string name="add_widget">Add widget</string>
 </resources>

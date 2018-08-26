@@ -2,7 +2,6 @@ package me.lukeforit.spaceofaday.data.source;
 
 import android.arch.persistence.room.EmptyResultSetException;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

@@ -11,7 +11,6 @@ public class ApodEntity {
     @PrimaryKey
     private int id;
     private String copyright;
-    @NonNull
     private String date;
     private String explanation;
     private String hdurl;

@@ -18,7 +18,7 @@ import me.lukeforit.spaceofaday.ui.base.DataBindingViewHolder;
 
 public class ApodArchiveAdapter extends DataBindingAdapter<ArchiveItem> {
 
-    public ApodArchiveAdapter(@NonNull List<ArchiveItem> data) {
+    ApodArchiveAdapter(@NonNull List<ArchiveItem> data) {
         super(data);
     }
 
@@ -30,12 +30,15 @@ public class ApodArchiveAdapter extends DataBindingAdapter<ArchiveItem> {
     @Override
     public DataBindingViewHolder<? extends ViewDataBinding, ArchiveItem> buildViewHolder(@NonNull ViewGroup parent, int viewType) {
         //TODO change ugly casting to another solution
-        if (viewType == R.layout.list_item_apod) {
-            return (DataBindingViewHolder) new ApodViewHolder(ListItemApodBinding
-                            .inflate(LayoutInflater.from(parent.getContext()), parent, false));
-        } else if (viewType == R.layout.list_item_apod_empty) {
-            return (DataBindingViewHolder) new EmptyApodViewHolder(ListItemApodEmptyBinding
-                            .inflate(LayoutInflater.from(parent.getContext()), parent, false));
-        } else throw new IllegalStateException("");
+        switch (viewType) {
+            case R.layout.list_item_apod:
+                return (DataBindingViewHolder) new ApodViewHolder(ListItemApodBinding
+                        .inflate(LayoutInflater.from(parent.getContext()), parent, false));
+            case R.layout.list_item_apod_empty:
+                return (DataBindingViewHolder) new EmptyApodViewHolder(ListItemApodEmptyBinding
+                        .inflate(LayoutInflater.from(parent.getContext()), parent, false));
+            default:
+                throw new IllegalStateException("");
+        }
     }
 }
