@@ -10,7 +10,8 @@ public class ApodItem extends ArchiveItem {
     @NonNull
     private Apod apod;
 
-    public ApodItem(@NonNull Apod apod) {
+    public ApodItem(OnArchiveItemClickListener listener, @NonNull Apod apod) {
+        super(listener);
         this.apod = apod;
     }
 

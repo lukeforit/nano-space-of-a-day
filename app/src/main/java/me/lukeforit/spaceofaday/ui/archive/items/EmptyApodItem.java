@@ -5,7 +5,8 @@ import me.lukeforit.spaceofaday.R;
 public class EmptyApodItem extends ArchiveItem {
     private String date;
 
-    public EmptyApodItem(String date) {
+    public EmptyApodItem(OnArchiveItemClickListener listener, String date) {
+        super(listener);
         this.date = date;
     }
 

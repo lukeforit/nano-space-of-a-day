@@ -1,7 +1,10 @@
 package me.lukeforit.spaceofaday.ui.home;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.view.MenuItem;
 
@@ -9,14 +12,23 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
+import javax.inject.Inject;
+
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.service.FetchApodJobScheduler;
 import me.lukeforit.spaceofaday.ui.archive.ApodArchiveFragment;
 import me.lukeforit.spaceofaday.ui.base.DIActivity;
+import me.lukeforit.spaceofaday.ui.base.DIViewModelFactory;
+import me.lukeforit.spaceofaday.ui.base.Event;
 import me.lukeforit.spaceofaday.ui.pod.ApodDetailsFragment;
 import me.lukeforit.spaceofaday.ui.pref.SettingsFragment;
 
 public class HomeActivity extends DIActivity {
+
+    private HomeViewModel viewModel;
+
+    @Inject
+    DIViewModelFactory viewModelFactory;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -51,6 +63,20 @@ public class HomeActivity extends DIActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel.class);
+        viewModel.getOpenApodScreen().observe(this, new Observer<Event<String>>() {
+            @Override
+            public void onChanged(@Nullable Event<String> stringEvent) {
+                if (stringEvent != null) {
+                    getSupportFragmentManager()
+                            .beginTransaction()
+                            .replace(R.id.content, ApodDetailsFragment.newInstance(stringEvent.deliverData()))
+                            .addToBackStack(null)
+                            .commit();
+                }
+            }
+        });
 
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

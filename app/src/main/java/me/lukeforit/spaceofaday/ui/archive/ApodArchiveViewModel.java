@@ -25,13 +25,29 @@ import me.lukeforit.spaceofaday.data.source.SpaceRepository;
 import me.lukeforit.spaceofaday.ui.archive.items.ApodItem;
 import me.lukeforit.spaceofaday.ui.archive.items.ArchiveItem;
 import me.lukeforit.spaceofaday.ui.archive.items.EmptyApodItem;
+import me.lukeforit.spaceofaday.ui.base.Event;
 
 public class ApodArchiveViewModel extends ViewModel {
 
     @Inject
     SpaceRepository repository;
     private MutableLiveData<List<ArchiveItem>> apodListLiveData = new MutableLiveData<>();
+    private MutableLiveData<Event<String>> displayApodEventLiveData = new MutableLiveData<>();
+
     private CompositeDisposable disposable = new CompositeDisposable();
+
+    private ArchiveItem.OnArchiveItemClickListener onApodClickListener = new ArchiveItem.OnArchiveItemClickListener() {
+        @Override
+        public void onClick(String date) {
+            displayApodEventLiveData.postValue(new Event<>(date));
+        }
+    };
+    private ArchiveItem.OnArchiveItemClickListener onEmptyApodClickListener = new ArchiveItem.OnArchiveItemClickListener() {
+        @Override
+        public void onClick(String date) {
+            displayApodEventLiveData.postValue(new Event<>(date));
+        }
+    };
 
     @Inject
     public ApodArchiveViewModel() {
@@ -72,9 +88,9 @@ public class ApodArchiveViewModel extends ViewModel {
                                 List<ArchiveItem> result = new ArrayList<>();
                                 for (String date: dates) {
                                     if (apodsByDate.containsKey(date)) {
-                                        result.add(new ApodItem(apodsByDate.get(date)));
+                                        result.add(new ApodItem(onApodClickListener, apodsByDate.get(date)));
                                     } else {
-                                        result.add(new EmptyApodItem(date));
+                                        result.add(new EmptyApodItem(onEmptyApodClickListener, date));
                                     }
                                 }
                                 return result;
@@ -97,5 +113,9 @@ public class ApodArchiveViewModel extends ViewModel {
 
     public MutableLiveData<List<ArchiveItem>> getArchiveItemListLiveData() {
         return apodListLiveData;
+    }
+
+    public MutableLiveData<Event<String>> getDisplayApodEventLiveData() {
+        return displayApodEventLiveData;
     }
 }
