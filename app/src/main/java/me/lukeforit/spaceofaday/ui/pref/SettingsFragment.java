@@ -35,8 +35,8 @@ public class SettingsFragment extends PreferenceFragmentCompat {
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         setPreferencesFromResource(R.xml.pref_general, rootKey);
 
-        bindPreferenceSummaryToValue(findPreference("example_text"));
-        bindPreferenceSummaryToValue(findPreference("example_list"));
+//        bindPreferenceSummaryToValue(findPreference("example_text"));
+//        bindPreferenceSummaryToValue(findPreference("example_list"));
     }
 
     private static void bindPreferenceSummaryToValue(Preference preference) {

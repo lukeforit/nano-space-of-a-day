@@ -2,6 +2,7 @@ package me.lukeforit.spaceofaday.data.source.cache;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -24,6 +25,7 @@ public class ApodEntity {
     public ApodEntity() {
     }
 
+    @Ignore
     public ApodEntity(int id, String copyright, @NonNull String date, String explanation, String hdurl, String mediaType, String serviceVersion, String title, String url) {
         this.id = id;
         this.copyright = copyright;

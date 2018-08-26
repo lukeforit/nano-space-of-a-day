@@ -9,13 +9,13 @@ import java.util.Collections;
 import java.util.List;
 
 import me.lukeforit.spaceofaday.R;
-import me.lukeforit.spaceofaday.data.model.Apod;
 import me.lukeforit.spaceofaday.databinding.FragmentApodArchiveBinding;
+import me.lukeforit.spaceofaday.ui.archive.items.ArchiveItem;
 import me.lukeforit.spaceofaday.ui.base.DIFragment;
 
 public class ApodArchiveFragment extends DIFragment<ApodArchiveViewModel, FragmentApodArchiveBinding> {
 
-    private ApodArchiveAdapter adapter = new ApodArchiveAdapter(Collections.<Apod>emptyList());
+    private ApodArchiveAdapter adapter = new ApodArchiveAdapter(Collections.<ArchiveItem>emptyList());
 
     public ApodArchiveFragment() {
     }
@@ -28,9 +28,9 @@ public class ApodArchiveFragment extends DIFragment<ApodArchiveViewModel, Fragme
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel.init();
-        viewModel.getApodListLiveData().observe(this, new Observer<List<Apod>>() {
+        viewModel.getArchiveItemListLiveData().observe(this, new Observer<List<ArchiveItem>>() {
             @Override
-            public void onChanged(@Nullable List<Apod> list) {
+            public void onChanged(@Nullable List<ArchiveItem> list) {
                 adapter.setData(list);
                 adapter.notifyDataSetChanged();
             }

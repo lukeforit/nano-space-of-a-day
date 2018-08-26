@@ -1,18 +1,15 @@
 package me.lukeforit.spaceofaday.ui.base;
 
-import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import java.util.List;
 
-public abstract class DataBindingAdapter<B extends ViewDataBinding, D> extends RecyclerView.Adapter<DataBindingViewHolder<B, D>> {
+public abstract class DataBindingAdapter<D> extends RecyclerView.Adapter<DataBindingViewHolder<? extends ViewDataBinding, D>> {
 
-    private List<D> data;
+    protected List<D> data;
 
     public DataBindingAdapter(@NonNull List<D> data) {
         this.data = data;
@@ -20,16 +17,13 @@ public abstract class DataBindingAdapter<B extends ViewDataBinding, D> extends R
 
     @NonNull
     @Override
-    public DataBindingViewHolder<B, D> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        B binding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext()),
-                getLayoutRes(), parent, false);
-        return new DataBindingViewHolder<>(binding);
+    public DataBindingViewHolder<? extends ViewDataBinding, D> onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return buildViewHolder(parent, viewType);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DataBindingViewHolder<B, D> holder, int position) {
-        holder.bindVariable(getBindingVariable(), data.get(position));
+    public void onBindViewHolder(@NonNull DataBindingViewHolder<? extends ViewDataBinding, D> holder, int position) {
+        holder.bind(data.get(position));
     }
 
     @Override
@@ -41,8 +35,5 @@ public abstract class DataBindingAdapter<B extends ViewDataBinding, D> extends R
         this.data = data;
     }
 
-    @LayoutRes
-    protected abstract int getLayoutRes();
-
-    protected abstract int getBindingVariable();
+    public abstract DataBindingViewHolder<? extends ViewDataBinding, D> buildViewHolder(@NonNull ViewGroup parent, int viewType);
 }
