@@ -12,6 +12,10 @@
     <string name="widget_option_explanation_only">Display only information about a picture of a day</string>
     <string name="widget_option_both">Display both - a picture and its explanation</string>
 
+    <string name="apod_description">A picture of a day</string>
+
+    <string name="button_description_more">See more</string>
+
     <string name="item_apod_empty_instruction">No data available. Please download a picture for that day to see how amazing the Universe is!</string>
 
     <!-- General settings -->
