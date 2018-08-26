@@ -1,6 +1,8 @@
 package me.lukeforit.spaceofaday.ui.pod;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 
 import me.lukeforit.spaceofaday.R;
@@ -36,6 +38,14 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
         }
         if (savedInstanceState == null) {
             viewModel.init(apodId);
+        }
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        if (getActivity() instanceof AppCompatActivity) {
+            ((AppCompatActivity) getActivity()).setSupportActionBar(binding.mainToolbar);
         }
     }
 
