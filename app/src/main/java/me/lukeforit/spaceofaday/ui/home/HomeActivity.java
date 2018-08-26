@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.FragmentManager;
 import android.view.MenuItem;
 
 import com.google.android.gms.ads.AdRequest;
@@ -35,6 +36,10 @@ public class HomeActivity extends DIActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            for(int i = 0; i < fragmentManager.getBackStackEntryCount(); ++i) {
+                fragmentManager.popBackStack();
+            }
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     getSupportFragmentManager()
