@@ -1,6 +1,8 @@
 package me.lukeforit.spaceofaday.ui.archive.items;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.text.Layout;
 import android.view.View;
 
 import me.lukeforit.spaceofaday.databinding.ListItemApodBinding;
@@ -21,5 +23,8 @@ public class ApodViewHolder extends DataBindingViewHolder<ListItemApodBinding, A
                 data.getListener().onClick(data.getApod().getDate());
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            binding.explanationTv.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+        }
     }
 }

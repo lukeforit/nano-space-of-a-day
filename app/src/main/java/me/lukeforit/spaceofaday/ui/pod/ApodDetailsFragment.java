@@ -1,8 +1,10 @@
 package me.lukeforit.spaceofaday.ui.pod;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Layout;
 import android.text.TextUtils;
 
 import me.lukeforit.spaceofaday.R;
@@ -38,6 +40,9 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
         }
         if (savedInstanceState == null) {
             viewModel.init(apodId);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            binding.explanationTv.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
         }
     }
 
