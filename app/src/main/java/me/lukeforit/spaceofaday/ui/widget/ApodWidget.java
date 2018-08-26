@@ -15,20 +15,23 @@ import java.util.concurrent.ExecutionException;
 
 import me.lukeforit.spaceofaday.R;
 import me.lukeforit.spaceofaday.common.Utils;
+import me.lukeforit.spaceofaday.data.model.Apod;
 import me.lukeforit.spaceofaday.service.FetchApodJobScheduler;
 import me.lukeforit.spaceofaday.ui.widget.config.ApodWidgetConfigureActivity;
 
 public class ApodWidget extends AppWidgetProvider {
 
     public static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
-                                       int appWidgetId, String imgUrl, String explanation) {
+                                       int appWidgetId, Apod apod) {
 
         int pref = ApodWidgetConfigureActivity.loadOptionPref(context, appWidgetId);
 
         final RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_apod);
 
+        views.setTextViewText(R.id.title_tv, apod.getTitle());
+
         if (pref == R.id.radio_both || pref == R.id.radio_info) {
-            views.setTextViewText(R.id.explanation_tv, explanation);
+            views.setTextViewText(R.id.explanation_tv, apod.getExplanation());
         }
 
         if (pref == R.id.radio_both || pref == R.id.radio_picture) {
@@ -38,7 +41,7 @@ public class ApodWidget extends AppWidgetProvider {
                         .with(context.getApplicationContext())
                         .asBitmap()
                         .apply(new RequestOptions().centerCrop())
-                        .load(imgUrl)
+                        .load(apod.getUrl())
                         .submit().get();
             } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();

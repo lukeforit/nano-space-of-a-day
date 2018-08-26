@@ -8,18 +8,30 @@
         android:id="@+id/picture_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        android:contentDescription="@string/appwidget_text"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#3c000000"
+        android:padding="@dimen/size_medium"
+        android:text="@string/appwidget_text"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/font_size_medium" />
 
     <TextView
         android:id="@+id/explanation_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/title_tv"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_margin="@dimen/size_medium"
-        android:scrollbars = "vertical"
-        android:background="#3cffffff"
-        android:contentDescription="@string/appwidget_text"
+        android:background="#3c000000"
+        android:gravity="center"
+        android:scrollbars="vertical"
         android:text="@string/appwidget_text"
         android:textColor="#ffffff" />
 

@@ -3,6 +3,7 @@
     <dimen name="size_small">4dp</dimen>
     <dimen name="size_medium">8dp</dimen>
 
+    <dimen name="font_size_medium">16sp</dimen>
     <!-- Component specific dimensions -->
     <dimen name="widget_margin">8dp</dimen>
 </resources>

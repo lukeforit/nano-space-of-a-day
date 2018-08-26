@@ -62,7 +62,7 @@ public class ApodIntentService extends IntentService {
         int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, ApodWidget.class));
 
         for (int appWidgetId : appWidgetIds) {
-            ApodWidget.updateAppWidget(this, appWidgetManager, appWidgetId, apod.getUrl(), apod.getExplanation());
+            ApodWidget.updateAppWidget(this, appWidgetManager, appWidgetId, apod);
         }
     }
 }
