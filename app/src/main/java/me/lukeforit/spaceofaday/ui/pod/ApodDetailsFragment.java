@@ -41,9 +41,6 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
         if (savedInstanceState == null) {
             viewModel.init(apodId);
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            binding.explanationTv.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-        }
     }
 
     @Override
@@ -51,6 +48,9 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
         super.onActivityCreated(savedInstanceState);
         if (getActivity() instanceof AppCompatActivity) {
             ((AppCompatActivity) getActivity()).setSupportActionBar(binding.mainToolbar);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            binding.explanationTv.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
         }
     }
 

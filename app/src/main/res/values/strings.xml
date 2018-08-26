@@ -12,6 +12,7 @@
     <string name="apod_description">A picture of a day</string>
 
     <string name="button_description_more">See more</string>
+    <string name="button_description_download">Download missing article</string>
 
     <string name="item_apod_empty_instruction">No data available. Please download a picture for that day to see how amazing the Universe is!</string>
 
