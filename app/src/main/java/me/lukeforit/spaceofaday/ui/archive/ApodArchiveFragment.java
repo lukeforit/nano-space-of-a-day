@@ -31,7 +31,9 @@ public class ApodArchiveFragment extends DIFragment<ApodArchiveViewModel, Fragme
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        viewModel.init();
+        if (savedInstanceState == null) {
+            viewModel.init();
+        }
         homeViewModel = ViewModelProviders.of(getActivity(), viewModelFactory).get(HomeViewModel.class);
 
         viewModel.getArchiveItemListLiveData().observe(this, new Observer<List<ArchiveItem>>() {
@@ -44,7 +46,7 @@ public class ApodArchiveFragment extends DIFragment<ApodArchiveViewModel, Fragme
         viewModel.getDisplayApodEventLiveData().observe(this, new Observer<Event<String>>() {
             @Override
             public void onChanged(@Nullable Event<String> stringEvent) {
-                if (stringEvent != null) {
+                if (stringEvent != null && !stringEvent.isDelivered()) {
                     homeViewModel.displayApod(stringEvent.deliverData());
                 }
             }

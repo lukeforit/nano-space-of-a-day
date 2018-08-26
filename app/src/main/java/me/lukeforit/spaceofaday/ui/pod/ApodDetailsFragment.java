@@ -34,7 +34,9 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
         if (TextUtils.isEmpty(apodId)) {
             apodId = Utils.getDefaultDateAsString();
         }
-        viewModel.init(apodId);
+        if (savedInstanceState == null) {
+            viewModel.init(apodId);
+        }
     }
 
     @Override

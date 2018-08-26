@@ -68,7 +68,7 @@ public class HomeActivity extends DIActivity {
         viewModel.getOpenApodScreen().observe(this, new Observer<Event<String>>() {
             @Override
             public void onChanged(@Nullable Event<String> stringEvent) {
-                if (stringEvent != null) {
+                if (stringEvent != null && !stringEvent.isDelivered()) {
                     getSupportFragmentManager()
                             .beginTransaction()
                             .replace(R.id.content, ApodDetailsFragment.newInstance(stringEvent.deliverData()))
