@@ -39,7 +39,7 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
             apodId = Utils.INSTANCE.getDefaultDateAsString();
         }
         if (savedInstanceState == null) {
-            viewModel.init(apodId);
+            getViewModel().init(apodId);
         }
     }
 
@@ -47,10 +47,10 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (getActivity() instanceof AppCompatActivity) {
-            ((AppCompatActivity) getActivity()).setSupportActionBar(binding.mainToolbar);
+            ((AppCompatActivity) getActivity()).setSupportActionBar(getBinding().mainToolbar);
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            binding.explanationTv.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+            getBinding().explanationTv.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
         }
     }
 
@@ -66,6 +66,6 @@ public class ApodDetailsFragment extends DIFragment<ApodDetailsViewModel, Fragme
 
     @Override
     protected void bind() {
-        binding.setVm(viewModel);
+        getBinding().setVm(getViewModel());
     }
 }
