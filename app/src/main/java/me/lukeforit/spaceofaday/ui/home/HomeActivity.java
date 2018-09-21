@@ -50,7 +50,7 @@ public class HomeActivity extends DIActivity {
                 case R.id.navigation_archive:
                     getSupportFragmentManager()
                             .beginTransaction()
-                            .replace(R.id.content, ApodArchiveFragment.newInstance())
+                            .replace(R.id.content, ApodArchiveFragment.Companion.newInstance())
                             .commit();
                     return true;
                 case R.id.navigation_settings:
