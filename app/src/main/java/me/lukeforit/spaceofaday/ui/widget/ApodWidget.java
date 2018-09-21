@@ -78,7 +78,7 @@ public class ApodWidget extends AppWidgetProvider {
 
     @Override
     public void onEnabled(Context context) {
-        FetchApodJobScheduler.scheduleFetchingApod(context);
+        FetchApodJobScheduler.INSTANCE.scheduleFetchingApod(context);
     }
 
     @Override

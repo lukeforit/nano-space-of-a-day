@@ -99,7 +99,7 @@ public class HomeActivity extends DIActivity {
         AdRequest adRequest = new AdRequest.Builder().build();
         adView.loadAd(adRequest);
 
-        FetchApodJobScheduler.scheduleFetchingApod(this);
+        FetchApodJobScheduler.INSTANCE.scheduleFetchingApod(this);
     }
 
 }
