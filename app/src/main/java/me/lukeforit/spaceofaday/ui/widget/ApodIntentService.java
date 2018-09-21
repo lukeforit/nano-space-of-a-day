@@ -50,7 +50,7 @@ public class ApodIntentService extends IntentService {
     }
 
     private void handleActionFetchApod(String date) {
-        ApodEntity apodEntity = apodDao.fetchSynchronyouslyBy(Utils.getDateAsInt(date));
+        ApodEntity apodEntity = apodDao.fetchSynchronyouslyBy(Utils.INSTANCE.getDateAsInt(date));
 
         if (apodEntity == null) {
             //TODO handle case

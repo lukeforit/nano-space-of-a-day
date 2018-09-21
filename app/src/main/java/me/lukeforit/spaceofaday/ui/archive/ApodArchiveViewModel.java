@@ -81,7 +81,7 @@ public class ApodArchiveViewModel extends ViewModel {
                                 for (Apod apod : list) {
                                     apodsByDate.put(apod.getDate(), apod);
                                 }
-                                List<String> dates = Utils.getDatesInRange(
+                                List<String> dates = Utils.INSTANCE.getDatesInRange(
                                         list.get(0).getDate(),
                                         list.get(list.size() - 1).getDate(),
                                         10);

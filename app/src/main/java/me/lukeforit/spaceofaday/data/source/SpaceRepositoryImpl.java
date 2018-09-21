@@ -39,7 +39,7 @@ public class SpaceRepositoryImpl implements SpaceRepository {
 
     @Override
     public Single<Apod> fetchApod(final String date) {
-        return apodDao.fetchBy(Utils.getDateAsInt(date))
+        return apodDao.fetchBy(Utils.INSTANCE.getDateAsInt(date))
                 .map(new Function<ApodEntity, Apod>() {
                     @Override
                     public Apod apply(ApodEntity apodEntity) {

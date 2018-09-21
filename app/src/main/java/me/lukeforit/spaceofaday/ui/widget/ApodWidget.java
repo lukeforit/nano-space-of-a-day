@@ -66,7 +66,7 @@ public class ApodWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         //TODO handle IllegalStateException: Not allowed to start service Intent - job
-        ApodIntentService.startActionFetchApod(context, Utils.getDefaultDateAsString());
+        ApodIntentService.startActionFetchApod(context, Utils.INSTANCE.getDefaultDateAsString());
     }
 
     @Override

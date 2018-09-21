@@ -31,7 +31,7 @@ public class FetchApodFirebaseJobService extends JobService {
     @Override
     public boolean onStartJob(final JobParameters job) {
         disposable.add(
-                repository.fetchApod(Utils.getDefaultDateAsString())
+                repository.fetchApod(Utils.INSTANCE.getDefaultDateAsString())
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Consumer<Apod>() {

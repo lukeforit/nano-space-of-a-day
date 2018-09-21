@@ -29,7 +29,7 @@ public class ApodMapper {
 
     public ApodEntity map(Apod apod) {
         return new ApodEntity(
-                Utils.getDateAsInt(apod.getDate()),
+                Utils.INSTANCE.getDateAsInt(apod.getDate()),
                 apod.getCopyright(),
                 apod.getDate(),
                 apod.getExplanation(),
