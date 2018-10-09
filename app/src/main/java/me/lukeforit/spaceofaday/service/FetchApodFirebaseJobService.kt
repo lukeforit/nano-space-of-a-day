@@ -14,7 +14,7 @@ import javax.inject.Inject
 class FetchApodFirebaseJobService : JobService() {
 
     @Inject
-    internal var repository: SpaceRepository? = null
+    internal lateinit var repository: SpaceRepository
 
     private val disposable = CompositeDisposable()
 

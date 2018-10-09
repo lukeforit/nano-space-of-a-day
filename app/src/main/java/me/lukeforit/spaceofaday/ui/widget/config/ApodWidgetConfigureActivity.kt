@@ -20,7 +20,7 @@ class ApodWidgetConfigureActivity : DIActivity() {
     internal var appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID
 
     @Inject
-    var viewModelFactory: DIViewModelFactory? = null
+    lateinit var viewModelFactory: DIViewModelFactory
     internal lateinit var viewModel: ApodWidgetConfigureViewModel
 
     public override fun onCreate(icicle: Bundle?) {

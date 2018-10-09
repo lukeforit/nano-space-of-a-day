@@ -14,9 +14,9 @@ import javax.inject.Inject
 class ApodIntentService : IntentService("ApodIntentService") {
 
     @Inject
-    internal var apodDao: ApodDao? = null
+    internal lateinit var apodDao: ApodDao
     @Inject
-    internal var mapper: ApodMapper? = null
+    internal lateinit var mapper: ApodMapper
 
     override fun onCreate() {
         AndroidInjection.inject(this)

@@ -20,7 +20,7 @@ abstract class DIActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private var tracker: Tracker? = null
 
     @Inject
-    internal var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>? = null
+    internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

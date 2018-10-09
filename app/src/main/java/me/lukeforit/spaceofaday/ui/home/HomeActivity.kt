@@ -21,7 +21,7 @@ class HomeActivity : DIActivity() {
     private var viewModel: HomeViewModel? = null
 
     @Inject
-    internal var viewModelFactory: DIViewModelFactory? = null
+    internal lateinit var viewModelFactory: DIViewModelFactory
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         val fragmentManager = supportFragmentManager

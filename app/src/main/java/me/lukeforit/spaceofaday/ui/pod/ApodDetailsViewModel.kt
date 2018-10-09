@@ -19,7 +19,7 @@ constructor() : ViewModel() {
     val apodLiveData = MutableLiveData<Apod>()
 
     @Inject
-    internal var repository: SpaceRepository? = null
+    internal lateinit var repository: SpaceRepository
 
     private val disposable = CompositeDisposable()
 

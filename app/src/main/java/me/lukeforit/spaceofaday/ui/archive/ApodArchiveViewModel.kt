@@ -29,7 +29,7 @@ class ApodArchiveViewModel @Inject
 constructor() : ViewModel() {
 
     @Inject
-    internal var repository: SpaceRepository? = null
+    internal lateinit var repository: SpaceRepository
     val archiveItemListLiveData = MutableLiveData<List<ArchiveItem>>()
     val displayApodEventLiveData = MutableLiveData<Event<String>>()
 

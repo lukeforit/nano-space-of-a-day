@@ -25,7 +25,7 @@ import me.lukeforit.spaceofaday.common.SpaceApp
 abstract class DIFragment<VM : ViewModel, B : ViewDataBinding> : Fragment() {
 
     @Inject
-    var viewModelFactory: DIViewModelFactory? = null
+    lateinit var viewModelFactory: DIViewModelFactory
     protected lateinit var viewModel: VM
     protected lateinit var binding: B
 
