@@ -13,6 +13,11 @@ import java.util.*
 
 class ApodArchiveFragment : DIFragment<ApodArchiveViewModel, FragmentApodArchiveBinding>() {
 
+    override val viewModelClass: Class<ApodArchiveViewModel>
+        get() = ApodArchiveViewModel::class.java
+    override val layoutRes: Int
+        get() = R.layout.fragment_apod_archive
+
     private val adapter = ApodArchiveAdapter(emptyList())
     private var homeViewModel: HomeViewModel? = null
 
@@ -24,22 +29,14 @@ class ApodArchiveFragment : DIFragment<ApodArchiveViewModel, FragmentApodArchive
         homeViewModel = ViewModelProviders.of(Objects.requireNonNull<FragmentActivity>(activity), viewModelFactory).get(HomeViewModel::class.java)
 
         viewModel.archiveItemListLiveData.observe(this, Observer { list ->
-            adapter.setData(list)
+            adapter.data = list ?: emptyList()
             adapter.notifyDataSetChanged()
         })
         viewModel.displayApodEventLiveData.observe(this, Observer { stringEvent ->
             if (stringEvent != null && !stringEvent.isDelivered) {
-                homeViewModel!!.displayApod(stringEvent.deliverData())
+                homeViewModel!!.displayApod(stringEvent.deliverData() ?: "")
             }
         })
-    }
-
-    override fun getViewModelClass(): Class<ApodArchiveViewModel> {
-        return ApodArchiveViewModel::class.java
-    }
-
-    override fun getLayoutRes(): Int {
-        return R.layout.fragment_apod_archive
     }
 
     override fun bind() {

@@ -25,7 +25,7 @@ constructor() {
 
     fun map(apod: Apod): ApodEntity {
         return ApodEntity(
-                Utils.getDateAsInt(apod.date),
+                Utils.getDateAsInt(apod.date!!),
                 apod.copyright,
                 apod.date,
                 apod.explanation,

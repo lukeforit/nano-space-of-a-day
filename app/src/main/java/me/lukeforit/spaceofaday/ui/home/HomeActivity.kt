@@ -63,7 +63,7 @@ class HomeActivity : DIActivity() {
             if (stringEvent != null && !stringEvent.isDelivered) {
                 supportFragmentManager
                         .beginTransaction()
-                        .replace(R.id.content, ApodDetailsFragment.newInstance(stringEvent.deliverData()))
+                        .replace(R.id.content, ApodDetailsFragment.newInstance(stringEvent.deliverData() ?: ""))
                         .addToBackStack(null)
                         .commit()
             }

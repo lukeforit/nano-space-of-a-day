@@ -4,7 +4,7 @@ import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 
-abstract class DataBindingAdapter<D>(protected var data: List<D>) : RecyclerView.Adapter<DataBindingViewHolder<out ViewDataBinding, D>>() {
+abstract class DataBindingAdapter<D>(var data: List<D>) : RecyclerView.Adapter<DataBindingViewHolder<out ViewDataBinding, D>>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder<out ViewDataBinding, D> {
         return buildViewHolder(parent, viewType)

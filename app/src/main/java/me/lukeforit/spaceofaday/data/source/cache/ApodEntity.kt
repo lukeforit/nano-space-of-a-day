@@ -23,7 +23,7 @@ class ApodEntity {
     constructor() {}
 
     @Ignore
-    constructor(id: Int, copyright: String, date: String, explanation: String, hdurl: String, mediaType: String, serviceVersion: String, title: String, url: String) {
+    constructor(id: Int, copyright: String?, date: String?, explanation: String?, hdurl: String?, mediaType: String?, serviceVersion: String?, title: String?, url: String?) {
         this.id = id
         this.copyright = copyright
         this.date = date

@@ -21,11 +21,11 @@ class ApodArchiveAdapter internal constructor(data: List<ArchiveItem>) : DataBin
 
     override fun buildViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder<out ViewDataBinding, ArchiveItem> {
         //TODO change ugly casting to another solution
-        when (viewType) {
-            R.layout.list_item_apod -> return ApodViewHolder(ListItemApodBinding
-                    .inflate(LayoutInflater.from(parent.context), parent, false))
-            R.layout.list_item_apod_empty -> return EmptyApodViewHolder(ListItemApodEmptyBinding
-                    .inflate(LayoutInflater.from(parent.context), parent, false))
+        return when (viewType) {
+            R.layout.list_item_apod -> ApodViewHolder(ListItemApodBinding
+                    .inflate(LayoutInflater.from(parent.context), parent, false)) as DataBindingViewHolder<out ViewDataBinding, ArchiveItem>
+            R.layout.list_item_apod_empty -> EmptyApodViewHolder(ListItemApodEmptyBinding
+                    .inflate(LayoutInflater.from(parent.context), parent, false)) as DataBindingViewHolder<out ViewDataBinding, ArchiveItem>
             else -> throw IllegalStateException("")
         }
     }
