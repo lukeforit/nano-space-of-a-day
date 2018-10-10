@@ -7,8 +7,8 @@ import me.lukeforit.spaceofaday.data.source.ApodRepository
 
 class ApodRepositoryNet(private val service: ApodRestService) : ApodRepository {
 
-    override fun fetchApod(date: String): Single<Apod> {
-        return service.getData(BuildConfig.apiKey, date)
-                .map { apodResponse -> apodResponse.body() }
-    }
+    override fun fetchApod(date: String): Single<Apod> =
+            service.getData(BuildConfig.apiKey, date)
+                    .map { apodResponse -> apodResponse.body() }
+
 }

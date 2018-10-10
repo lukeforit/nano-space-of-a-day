@@ -12,7 +12,7 @@ import java.util.Date
 object Utils {
 
     @SuppressLint("SimpleDateFormat")
-    var defaultDateFormat = SimpleDateFormat("yyyy-MM-dd")
+    val defaultDateFormat = SimpleDateFormat("yyyy-MM-dd")
 
     val defaultDateAsString: String
         get() = defaultDateFormat.format(Date())

@@ -14,7 +14,7 @@ class CacheModule {
     @Provides
     @Singleton
     fun provideSpaceDatabase(@Named("appContext") context: Context): SpaceDatabase {
-        return Room.databaseBuilder(context, SpaceDatabase::class.java, SpaceDatabase.DATABASE_NAME).build()
+        return Room.databaseBuilder(context, SpaceDatabase::class.java, DATABASE_NAME).build()
     }
 
     @Provides
