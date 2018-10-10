@@ -5,17 +5,17 @@ import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = TABLE_NAME)
-class ApodEntity(
+data class ApodEntity(
         @PrimaryKey
-        val id: Int = 0,
-        val copyright: String? = null,
-        val date: String? = null,
-        val explanation: String? = null,
-        val hdurl: String? = null,
+        var id: Int = 0,
+        var copyright: String? = null,
+        var date: String? = null,
+        var explanation: String? = null,
+        var hdurl: String? = null,
         @ColumnInfo(name = "media_type")
-        val mediaType: String? = null,
+        var mediaType: String? = null,
         @ColumnInfo(name = "service_version")
-        val serviceVersion: String? = null,
-        val title: String? = null,
-        val url: String? = null
+        var serviceVersion: String? = null,
+        var title: String? = null,
+        var url: String? = null
 )
