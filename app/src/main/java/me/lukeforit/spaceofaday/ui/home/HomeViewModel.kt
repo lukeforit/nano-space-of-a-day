@@ -1,7 +1,7 @@
 package me.lukeforit.spaceofaday.ui.home
 
-import android.arch.lifecycle.MutableLiveData
-import android.arch.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 
 import javax.inject.Inject
 

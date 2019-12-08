@@ -10,7 +10,7 @@
             type="me.lukeforit.spaceofaday.data.model.Apod" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/size_small"
@@ -55,5 +55,5 @@
             app:layout_constraintTop_toBottomOf="@+id/title_tv"
             tools:text="Explanation" />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,28 +1,24 @@
 package me.lukeforit.spaceofaday.ui.base
 
-import android.arch.lifecycle.ViewModel
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.annotation.LayoutRes
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.annotation.LayoutRes
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.analytics.HitBuilders
 import com.google.android.gms.analytics.Tracker
-
-import java.util.Objects
-
-import javax.inject.Inject
-
 import dagger.android.support.AndroidSupportInjection
 import me.lukeforit.spaceofaday.common.SpaceApp
+import java.util.*
+import javax.inject.Inject
 
-abstract class DIFragment<VM : ViewModel, B : ViewDataBinding> : Fragment() {
+abstract class DIFragment<VM, B> : Fragment() where VM : ViewModel, B : ViewDataBinding {
 
     @Inject
     lateinit var viewModelFactory: DIViewModelFactory
@@ -37,7 +33,7 @@ abstract class DIFragment<VM : ViewModel, B : ViewDataBinding> : Fragment() {
     @get:LayoutRes
     protected abstract val layoutRes: Int
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         AndroidSupportInjection.inject(this)
         super.onAttach(context)
     }

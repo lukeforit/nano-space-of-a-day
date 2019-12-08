@@ -1,10 +1,10 @@
 package me.lukeforit.spaceofaday.ui.archive
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
-import android.support.v7.widget.LinearLayoutManager
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import me.lukeforit.spaceofaday.R
 import me.lukeforit.spaceofaday.databinding.FragmentApodArchiveBinding
 import me.lukeforit.spaceofaday.ui.base.DIFragment
@@ -26,7 +26,7 @@ class ApodArchiveFragment : DIFragment<ApodArchiveViewModel, FragmentApodArchive
         if (savedInstanceState == null) {
             viewModel.init()
         }
-        homeViewModel = ViewModelProviders.of(Objects.requireNonNull<FragmentActivity>(activity), viewModelFactory).get(HomeViewModel::class.java)
+        homeViewModel = ViewModelProviders.of(Objects.requireNonNull<androidx.fragment.app.FragmentActivity>(activity), viewModelFactory).get(HomeViewModel::class.java)
 
         viewModel.archiveItemListLiveData.observe(this, Observer { list ->
             adapter.data = list ?: emptyList()
@@ -41,7 +41,7 @@ class ApodArchiveFragment : DIFragment<ApodArchiveViewModel, FragmentApodArchive
 
     override fun bind() {
         binding.vm = viewModel
-        binding.archiveListRv.layoutManager = LinearLayoutManager(context)
+        binding.archiveListRv.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(context)
         binding.archiveListRv.adapter = adapter
     }
 

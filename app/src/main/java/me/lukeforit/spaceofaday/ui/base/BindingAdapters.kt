@@ -1,6 +1,6 @@
 package me.lukeforit.spaceofaday.ui.base
 
-import android.databinding.BindingAdapter
+import androidx.databinding.BindingAdapter
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.view.ViewGroup

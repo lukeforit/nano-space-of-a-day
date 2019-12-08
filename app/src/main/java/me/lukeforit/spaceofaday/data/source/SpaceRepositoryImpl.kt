@@ -1,6 +1,6 @@
 package me.lukeforit.spaceofaday.data.source
 
-import android.arch.persistence.room.EmptyResultSetException
+import androidx.room.EmptyResultSetException
 import io.reactivex.Single
 import me.lukeforit.spaceofaday.common.Utils
 import me.lukeforit.spaceofaday.data.mapper.ApodMapper

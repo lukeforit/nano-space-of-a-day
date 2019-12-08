@@ -1,6 +1,6 @@
 package me.lukeforit.spaceofaday.ui.archive.items
 
-import android.support.annotation.LayoutRes
+import androidx.annotation.LayoutRes
 
 abstract class ArchiveItem(val listener: OnArchiveItemClickListener) {
 

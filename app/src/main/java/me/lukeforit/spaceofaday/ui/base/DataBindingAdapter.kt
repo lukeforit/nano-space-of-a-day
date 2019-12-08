@@ -1,7 +1,7 @@
 package me.lukeforit.spaceofaday.ui.base
 
-import android.databinding.ViewDataBinding
-import android.support.v7.widget.RecyclerView
+import androidx.databinding.ViewDataBinding
+import androidx.recyclerview.widget.RecyclerView
 import android.view.ViewGroup
 
 abstract class DataBindingAdapter<D>(var data: List<D>) : RecyclerView.Adapter<DataBindingViewHolder<out ViewDataBinding, D>>() {

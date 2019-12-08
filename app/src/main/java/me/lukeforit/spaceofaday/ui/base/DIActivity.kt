@@ -1,8 +1,8 @@
 package me.lukeforit.spaceofaday.ui.base
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import androidx.appcompat.app.AppCompatActivity
 
 import com.google.android.gms.analytics.HitBuilders
 import com.google.android.gms.analytics.Tracker
@@ -20,7 +20,7 @@ abstract class DIActivity : AppCompatActivity(), HasSupportFragmentInjector {
     private var tracker: Tracker? = null
 
     @Inject
-    internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+    internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<androidx.fragment.app.Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -36,7 +36,7 @@ abstract class DIActivity : AppCompatActivity(), HasSupportFragmentInjector {
         tracker!!.send(HitBuilders.ScreenViewBuilder().build())
     }
 
-    override fun supportFragmentInjector(): AndroidInjector<Fragment>? {
+    override fun supportFragmentInjector(): AndroidInjector<androidx.fragment.app.Fragment>? {
         return fragmentDispatchingAndroidInjector
     }
 }

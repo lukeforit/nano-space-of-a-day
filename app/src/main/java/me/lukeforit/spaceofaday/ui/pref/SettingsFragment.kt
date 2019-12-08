@@ -2,8 +2,8 @@ package me.lukeforit.spaceofaday.ui.pref
 
 import android.os.Bundle
 import android.preference.PreferenceManager
-import android.support.v7.preference.Preference
-import android.support.v7.preference.PreferenceFragmentCompat
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
 
 import me.lukeforit.spaceofaday.R
 
