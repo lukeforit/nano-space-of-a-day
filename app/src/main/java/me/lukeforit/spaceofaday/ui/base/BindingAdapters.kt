@@ -13,7 +13,8 @@ import com.bumptech.glide.request.transition.Transition
 
 object BindingAdapters {
     @BindingAdapter("image_url")
-    fun bindUrl(imageView: ImageView, url: String) {
+    @JvmStatic
+    fun bindUrl(imageView: ImageView, url: String?) {
         if (!TextUtils.isEmpty(url)) {
             Glide.with(imageView.context)
                     .load(url)
@@ -23,7 +24,8 @@ object BindingAdapters {
     }
 
     @BindingAdapter("background_url")
-    fun bindUrl(viewGroup: ViewGroup, url: String) {
+    @JvmStatic
+    fun bindUrl(viewGroup: ViewGroup, url: String?) {
         if (!TextUtils.isEmpty(url)) {
             Glide.with(viewGroup.context)
                     .load(url)

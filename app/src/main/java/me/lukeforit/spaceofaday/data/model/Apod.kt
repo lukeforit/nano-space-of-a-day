@@ -12,5 +12,5 @@ class Apod(
         @Json(name = "service_version")
         val serviceVersion: String? = null,
         val title: String? = null,
-        val url: String? = null
+        val url: String = ""
 )

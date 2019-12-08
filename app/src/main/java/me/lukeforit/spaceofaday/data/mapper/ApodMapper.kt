@@ -16,7 +16,7 @@ class ApodMapper @Inject constructor() {
                     entity.mediaType,
                     entity.serviceVersion,
                     entity.title,
-                    entity.url
+                    entity.url.orEmpty()
             )
 
     fun map(apod: Apod): ApodEntity =
